@@ -1,0 +1,7 @@
+{
+  "name": "cursor-mini-app",
+  "private": true,
+  "scripts": {
+    "test": "node --test"
+  }
+}

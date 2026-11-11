@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A 25/5 Pomodoro timer and task list that stays in your browser.">
+  <meta name="theme-color" content="#14110f">
+  <title>25:00 · Focus</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%23ef7d3c' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='7' r='2.1' fill='%23ef7d3c'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-mode="work">
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2.4"></circle>
+          <circle cx="16" cy="7" r="2.1" fill="currentColor"></circle>
+        </svg>
+        <div>
+          <p class="eyebrow">Pomodoro</p>
+          <h1>Focus</h1>
+        </div>
+      </div>
+      <p class="lede">Twenty-five minutes on, five minutes off. Your list stays in this browser.</p>
+    </header>
+
+    <main>
+      <section class="card timer-card" aria-labelledby="timer-heading">
+        <h2 id="timer-heading" class="sr-only">Timer</h2>
+        <div class="modes" role="group" aria-label="Session length">
+          <button type="button" data-set-mode="work" aria-pressed="true">Focus 25</button>
+          <button type="button" data-set-mode="break" aria-pressed="false">Break 5</button>
+        </div>
+
+        <div class="dial">
+          <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ring-track" cx="60" cy="60" r="52"></circle>
+            <circle id="ring-progress" cx="60" cy="60" r="52" transform="rotate(-90 60 60)"></circle>
+          </svg>
+          <div class="readout">
+            <p id="time" class="time" role="timer">25:00</p>
+            <p id="phase" class="phase">Focus session · Ready</p>
+          </div>
+        </div>
+
+        <div class="controls" role="group" aria-label="Timer controls">
+          <button type="button" id="start" class="btn-primary">Start</button>
+          <button type="button" id="pause" class="btn-ghost" disabled>Pause</button>
+          <button type="button" id="reset" class="btn-ghost" disabled>Reset</button>
+        </div>
+
+        <p id="cue" class="cue" role="status" aria-live="assertive"></p>
+        <p id="sessions" class="sessions" hidden></p>
+        <p class="hint">Space starts and pauses. R resets.</p>
+      </section>
+
+      <section class="card tasks-card" aria-labelledby="tasks-heading">
+        <div class="tasks-head">
+          <h2 id="tasks-heading">Tasks</h2>
+          <p id="task-count" class="task-count">Nothing queued</p>
+        </div>
+        <form id="task-form" class="task-form" autocomplete="off">
+          <label class="sr-only" for="task-input">New task</label>
+          <input id="task-input" class="task-input" name="task" type="text" maxlength="140" placeholder="What are you working on?" required>
+          <button type="submit" class="btn-primary">Add</button>
+        </form>
+        <ul id="task-list" class="task-list"></ul>
+        <p id="empty" class="empty">No tasks yet. Add one thing you want to finish.</p>
+      </section>
+    </main>
+
+    <footer class="foot">Made for MLH Global Hack Week. Times and tasks stay on this device.</footer>
+  </div>
+  <script src="js/timer.js"></script>
+  <script src="js/tasks.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
